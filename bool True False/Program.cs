@@ -10,7 +10,7 @@ namespace Bool
             bool b = false;
 
         Console.WriteLine(a);
-        Console.WriteLine(b);
+        Console.WriteLine(b); //주석
         }
     }
 }
