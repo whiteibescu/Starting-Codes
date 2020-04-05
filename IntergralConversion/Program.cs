@@ -12,7 +12,7 @@ namespace IntergralConversion
             int = b (int)a;
             Console.Writeline(b);
 
-            int x = 128; // sbyte 의 최대값 127보다 1 큰 수 12
+            int x = 128; // sbyte 의 최대값 127보다 1 큰 수
             Console.Writeline(x);
 
             sbyte y = (sbyte)x;
