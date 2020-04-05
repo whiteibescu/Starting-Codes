@@ -1,6 +1,0 @@
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\Object\bin\Debug\Object.exe.config
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\Object\bin\Debug\Object.exe
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\Object\bin\Debug\Object.pdb
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\Object\obj\Debug\Object.csproj.CoreCompileInputs.cache
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\Object\obj\Debug\Object.exe
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\Object\obj\Debug\Object.pdb

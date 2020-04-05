@@ -1,6 +1,0 @@
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\BoxingUnboxing\obj\Debug\BoxingUnboxing.csproj.CoreCompileInputs.cache
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\BoxingUnboxing\bin\Debug\BoxingUnboxing.exe.config
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\BoxingUnboxing\bin\Debug\BoxingUnboxing.exe
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\BoxingUnboxing\bin\Debug\BoxingUnboxing.pdb
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\BoxingUnboxing\obj\Debug\BoxingUnboxing.exe
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\BoxingUnboxing\obj\Debug\BoxingUnboxing.pdb

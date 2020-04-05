@@ -1,2 +1,0 @@
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\IntergralConversion\obj\Debug\IntergralConversion.csprojAssemblyReference.cache
-C:\Users\white\source\repos\whiteibescu\Starting-Codes\IntergralConversion\obj\Debug\IntergralConversion.csproj.CoreCompileInputs.cache
