@@ -9,7 +9,7 @@ namespace enum3
         static void Main(string[] args)
         {
             DialogResult result = DialogResult.YES;
-
+            
             Console.WriteLine((int)DialogResult.YES);
             Console.WriteLine((int)DialogResult.NO);
             Console.WriteLine((int)DialogResult.CANCEL);
