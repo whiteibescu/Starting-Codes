@@ -16,7 +16,9 @@ namespace IntergralConversion
             Console.WriteLine(x);
 
             sbyte y = (sbyte)x;
-            Console.WriteLine(y); 
+            Console.WriteLine(y);
+
+            Console.ReadLine();
        
         }
     }
