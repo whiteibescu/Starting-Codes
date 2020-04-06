@@ -7,9 +7,9 @@ namespace IntergralConversion
         static void Main(string[] args);
         {
             sbyte a = 127;
-            Console. Writeline(a);
+            Console.Writeline(a);
 
-            int = b (int)a;
+            int b = (int)a;
             Console.Writeline(b);
 
             int x = 128; // sbyte 의 최대값 127보다 1 큰 수
