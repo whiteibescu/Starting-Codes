@@ -12,7 +12,7 @@ namespace Constant
             Console.WriteLine(MAX_INT);
             Console.WriteLine(MIN_INT);
 
-            Console.ReadLine();
+            Console.ReadLine(); 
         }
     }
 }
