@@ -15,7 +15,7 @@ namespace enum3
             Console.WriteLine((int)DialogResult.CANCEL);
             Console.WriteLine((int)DialogResult.CONFIRM);
             Console.WriteLine((int)DialogResult.OK);
-            Console.ReadLine();
+            Console.ReadLine(); 
         }
     }
 }
