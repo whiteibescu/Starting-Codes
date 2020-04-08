@@ -24,7 +24,7 @@ $ dollar
 ? question mark
 = equal sign
 - dash
-() parenthesis 괄호
+() parenthesis
 _ underscore
 {} curly brackets
 [] square brackets
