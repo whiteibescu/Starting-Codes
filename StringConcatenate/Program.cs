@@ -11,7 +11,6 @@ namespace StringConcatenate
 
             result = "Hello" + " " + "World!";
             Console.WriteLine(result);
-
         }
     }
 }
