@@ -19,7 +19,7 @@ namespace Goto
                 {
                     for (int k = 0; k < 2; k++)
                     {
-                        if (exit_number++ == input_number)
+                        if (exit_number++ == input_number) //조건이 참이면 33행으로 단숨에 점프합니다.
                             goto EXIT_FOR;
 
                         Console.WriteLine(exit_number);
@@ -28,7 +28,7 @@ namespace Goto
                 }
             }
 
-            goto EXIT_PROGRAM;
+            goto EXIT_PROGRAM; //36행으로 점프합니다. 33행의 EXIT_FOR를 만나지 않기 위해서입니다.
 
         EXIT_FOR:
             Console.WriteLine("\nExit nested for...");
