@@ -12,7 +12,7 @@ namespace ConditionalOperator
             
             // 조건식 ? 참일_떄의_값 : 거짓일_때의_값                                       
             //condition ? true : false                                      
-            //ex) string result = a == 30 ? "삼십" : "쌈십아님";
+            //ex) string result = a == 30 ? "삼십" : "삼십아님";
         }
     }
 }
