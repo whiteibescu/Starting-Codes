@@ -12,7 +12,10 @@ namespace Chapter2Exercise
             Console.WriteLine("사각형의 높이를 입력하세요.");
             string height = Console.ReadLine();
 
-            
+            int area = int.Parse(width) * int.Parse(height);
+
+            Console.WriteLine("사각형의 넓이:{0}", area);
+
             //이곳에 사각형의 넓이를 계산하고
             //출력하는 루틴을 추가하세요.
         }
