@@ -8,7 +8,11 @@ namespace ConditionalOperator
         {
             string result = (10 % 2) == 0 ? "짝수" : "홀수";
 
-            Console.WriteLine(result); // 아니 홀수가 되어야지 왜 짝수가 되는거지??????
+            Console.WriteLine(result);
+            
+            // 조건식 ? 참일_떄의_값 : 거짓일_때의_값                                       
+            //condition ? true : false                                      
+            //ex) string result = a == 30 ? "삼십" : "쌈십아님";
         }
     }
 }
