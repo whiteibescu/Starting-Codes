@@ -18,7 +18,7 @@ namespace Constructor
 
         ~Cat()
         {
-            Console.WriteLine($"{nameof} : 잘가");          
+            Console.WriteLine($"{Name}: 잘가");
         }
 
         public string Name;
@@ -28,7 +28,7 @@ namespace Constructor
         {
             Console.WriteLine($"{Name} : 야옹");
         }
-
+    }
 
         class MainApp
         {
@@ -43,5 +43,5 @@ namespace Constructor
                 Console.WriteLine($"{nero.Name} : {nero.Color}");
             }
         }        
-    }
 }
+//예제 프로그램의 결과가 다를 수도 있습니다.마지막 두줄은 매 실행 시마다 달라질 수 있습니다.
