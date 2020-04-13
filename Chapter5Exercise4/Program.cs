@@ -10,7 +10,11 @@ namespace Chapter5Exercise4
     {
         static void Main(string[] args)
         {
+            int area = int.Parse(width) * int.Parse(height);
+
+            Console.WriteLine("사각형의 넓이:{0}", area);
         }
+
     }
 }
 // 4.다음과 같이 사용자로부터 입력받은 횟수만큼 별을 반복 출력하는 프로그램을 작성하세요. 
