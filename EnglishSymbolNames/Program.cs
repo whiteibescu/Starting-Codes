@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EnglishSymbolNames
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {          
-/*
+﻿/*
 ~ tilde 
 ` back tick
 ! exclamation Mark
@@ -36,6 +24,3 @@ _ underscore
 '' quote
 "" double quote
 */
-        }
-    }
-}
