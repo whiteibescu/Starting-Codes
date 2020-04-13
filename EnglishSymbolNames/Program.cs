@@ -29,7 +29,7 @@ _ underscore
 {} curly brackets
 [] square brackets
 <> pointy brackets 
-/ slash or forward slash
+/ forward slash or slash
 \ back slash
 : colon
 ; semi colon
