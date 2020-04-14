@@ -28,18 +28,18 @@ namespace This
         }
     }
 
-    class  MainApp
+    class MainApp
     {
         static void Main(string[] args)
         {
             Employee pooh = new Employee();
-            pooh.SetName("Pooh)");
-            pooh.SetPostition("Waiter");
-            Console.WriteLine($"{pooh.Getname()} {pooh.Position()}");
+            pooh.SetName("Pooh");
+            pooh.SetPosition("Waiter");
+            Console.WriteLine($"{pooh.GetName()} {pooh.GetPosition()}");
 
             Employee tigger = new Employee();
-            tigger.Setname("Tigger");
-            tigger.Setposition("Cleaner");
+            tigger.SetName("Tigger");
+            tigger.SetPosition("Cleaner");
             Console.WriteLine($"{tigger.GetName()} {tigger.GetPosition()}");
         }
     }
