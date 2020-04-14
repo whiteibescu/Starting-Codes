@@ -2,7 +2,7 @@
 
 namespace This
 {
-    class Program
+    class Employee
     {
         private string Name;
         private string Position;
