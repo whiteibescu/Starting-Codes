@@ -7,7 +7,7 @@ namespace This
         private string Name;
         private string Position;
 
-        public void SetTname(string Name)
+        public void SetName(string Name)
         {
             this.Name = Name;
         }
@@ -24,7 +24,7 @@ namespace This
 
         public string GetPosition()
         {
-            this.Position = Position;
+            return this.Position;
         }
     }
 
@@ -40,7 +40,7 @@ namespace This
             Employee tigger = new Employee();
             tigger.Setname("Tigger");
             tigger.Setposition("Cleaner");
-            Console.WriteLine($"{tiger,GetName()} {tigger.GetPosition()}");
+            Console.WriteLine($"{tigger.GetName()} {tigger.GetPosition()}");
         }
     }
 }
