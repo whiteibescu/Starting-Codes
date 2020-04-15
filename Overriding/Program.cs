@@ -37,7 +37,13 @@ namespace Overriding
             ArmorSuite armorsuite = new ArmorSuite();
             armorsuite.Initialize();
 
+            Console.WriteLine("\nCreating IronMan...");
+            ArmorSuite ironman = new IronMan();
+            ironman.Initialize();
 
+            Console.WriteLine("\nCreating WarMachine...");
+            ArmorSuite warmachine = new WarMachine();
+            warmachine.Initialize();
         }
     }
 }
