@@ -15,7 +15,7 @@
 
     class WantToOverride : Derived
     {
-        public override void SealMe()
+        public override void SealMe()  //주석 참고
         {
         }
     }
