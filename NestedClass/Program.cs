@@ -41,9 +41,8 @@ namespace NestedClass
                     {
                         config.listConfig[i] = this;
                         found = true;
-                        break; 45                     }
+                        break; 45                  }
                     }
-
                     if (found == false)
                         config.listConfig.Add(this);
                 }
@@ -71,4 +70,4 @@ namespace NestedClass
             }
         }
     }
-}
+
