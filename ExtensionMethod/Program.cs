@@ -9,15 +9,16 @@ namespace ExtensionMethod
         {
             return myInt * myInt;
         }
-    }
 
-    public static int Power(this int myInt, int exponent)
-    {
-        int result = myInt;
-        for (int i = 1; i < exponent; i++)
-            result = result * myInt;
 
-        return result;
+        public static int Power(this int myInt, int exponent)
+        {
+            int result = myInt;
+            for (int i = 1; i < exponent; i++)
+                result = result * myInt;
+
+            return result;
+        }
     }
 }
 
