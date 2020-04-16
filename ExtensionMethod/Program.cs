@@ -4,9 +4,11 @@ using ExtensionMethod;
 namespace ExtensionMethod
 {
     public static class IntegerExtension
-    public static int Square(this int myInt)
     {
-        return myInt * my Int;
+        public static int Square(this int myInt)
+        {
+            return myInt * myInt;
+        }
     }
 
     public static int Power(this int myInt, int exponent)
