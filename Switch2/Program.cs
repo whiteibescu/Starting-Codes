@@ -2,7 +2,7 @@
 
 namespace Switch2
 {
-    class Program
+    class MainApp
     {
         static void Main(string[] args)
         {
@@ -11,7 +11,7 @@ namespace Switch2
             string s = Console.ReadLine();
             if (int.TryParse(s, out int out_i))
                 obj = out_i;
-            else if (float.TryParse(s, out float out_f)
+            else if (float.TryParse(s, out float out_f))
                 obj = out_f;
             else
                 obj = s;
@@ -23,6 +23,7 @@ namespace Switch2
                     break;
                 case float f:
                     Console.WriteLine($"{f}는 float 형식입니다.");
+                    break;
                 default:
                     Console.WriteLine($"{obj}는 모르는 형식입니다.");
                     break;
