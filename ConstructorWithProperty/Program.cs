@@ -4,7 +4,7 @@ namespace ConstructorWithProperty
 {
     class BirthdayInfo
     {
-        public string name
+        public string Name
         {
             get;
             set;
