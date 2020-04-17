@@ -5,7 +5,7 @@ namespace Interface
 {
     interface ILogger
     {
-        void WritwLong(string message);
+        void WriteLog(string message);
     }
 
     class ConsoleLogger : ILogger
@@ -24,7 +24,7 @@ namespace Interface
 
         public FileLogger(string path)
         {
-            writer = File.CreateText(Path);
+            writer = File.CreateText(path);
             writer.AutoFlush = true;
         }
 
@@ -67,3 +67,4 @@ namespace Interface
         }
     }
 }
+//인터페이스 
