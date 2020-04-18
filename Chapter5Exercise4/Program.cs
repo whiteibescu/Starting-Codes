@@ -1,18 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using static System.Console;
 namespace Chapter5Exercise4
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            int area = int.Parse(width) * int.Parse(height);
+            Write("반복 횟수를 입력하세요 :");
+            int inPut = int.Parse(ReadLine());
 
-            Console.WriteLine("사각형의 넓이:{0}", area);
+            if (inPut <= 0)
+                WriteLine("0보다 같거나 작은 숫자는 사용할 수 없습니다.");
+
+            for(int i = 0; i < inPut; ++i)
+            {
+                for (int j = 0; j < i + 1; ++j)
+                    Write("*");
+                WriteLine();
+            }    
+
         }
 
     }
