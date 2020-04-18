@@ -54,10 +54,10 @@ namespace EX9_2
     {
         static void Main(string[] args)
         {
-            var nameCard = /*무명 형시을 이용해서 완성하세요 ;
+            var nameCard = new {Name="박상현", Age="17"};
             Console.WriteLine("이름:{0}. 나이:{1}", nameCard.Name, nameCard.Age);
 
-            var complex = /* 무명 형식을 이용해서 완성하세요 ;
+            var complex = new {Real = "3", Imaginary="-12"};
             Console.WriteLine("Real:{0}, Imaginary:{1}",
                 complex.Real, complex.Imaginary);
         }
