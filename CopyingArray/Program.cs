@@ -25,7 +25,7 @@ namespace CopyingArray
 
             CopyArray<string>(source2, target2);
 
-            foreach (string element in targe2)
+            foreach (string element in target2)
                 Console.WriteLine(element);
             }        
     }
