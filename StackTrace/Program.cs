@@ -14,7 +14,7 @@ namespace StackTrace
             catch (DivideByZeroException e)
             {
                 Console.WriteLine(e.StackTrace);
-            }f
+            }
         }
     }
 }
