@@ -60,7 +60,9 @@ namespace MyException
             { 
                 Console.WriteLine(e.Message);
                 Console.WriteLine($"Argument:{e.Argument}, Range:{e.Range}");
+
             }
+
         }
     }
 }
