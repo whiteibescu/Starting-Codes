@@ -17,6 +17,8 @@
 
 
 using System;
+using static System.Console;
+using System.Collections;
 
 namespace Chapter12Exercise
 {
@@ -26,11 +28,20 @@ namespace Chapter12Exercise
         {
             int[] arr = new int[10];
 
-            for (int i = 0; i < 10; i++)
-                arr[i] = i;
+            try
+            {
 
-            for(int i=0; i< 11;) i++)
-                Console.WriteLine(arr[i]);
+                for (int i = 0; i < 10; i++)
+                    arr[i] = i;
+
+                for (int i = 0; i < 11; i++)
+                WriteLine(arr[i]);
+            }
+            catch(Exception e)
+            {
+                WriteLine("예외발생, {0}", e.Message);
+            }
+            WriteLine("종료");
         }
     }
 }
