@@ -2,7 +2,7 @@
 
 namespace MultiInterfaceInheritance
 {
-    class IRunnable
+    interface IRunnable
     {
         void Run();
     }
@@ -18,8 +18,8 @@ namespace MultiInterfaceInheritance
         {
             Console.WriteLine("Run! Run!");
         }
-
-        public void FLy()
+    
+        public void Fly()
         {
             Console.WriteLine("Fly! Fly!");
         }
@@ -31,7 +31,7 @@ namespace MultiInterfaceInheritance
         {
             FlyingCar car = new FlyingCar();
             car.Run();
-            car.FLy();
+            car.Fly();
 
             IRunnable runnable = car as IRunnable;
             runnable.Run();
