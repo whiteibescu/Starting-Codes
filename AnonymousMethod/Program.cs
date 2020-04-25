@@ -6,7 +6,7 @@ namespace AnonymousMethod
 
     class Program
     {
-        static void Main(string[] args)
+        static void BubbleSort(int[] DataSet, Compare Comparer)
         {
             int i = 0;
             int j = 0;
@@ -57,7 +57,7 @@ namespace AnonymousMethod
             });
 
             for (int i = 0; i < array2.Length; i++)
-                Console.WriteLine($"{array2[i]} ");
+                Console.Write($"{array2[i]} ");
 
             Console.WriteLine();
         }
