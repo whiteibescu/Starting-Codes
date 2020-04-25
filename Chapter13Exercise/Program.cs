@@ -16,13 +16,19 @@ namespace Chapter13Exercise
         {
             MyDelegate Callback;
 
-            Callback = 익명 메소드 선언
+            Callback = delegate (int a, int b)
+            {
+                return a + b;
+            };
 
-                Console.WriteLine(Callback(3, 4));
+            Console.WriteLine(Callback(3, 4));
             
-            Callback = 익명 메소드 선언
+            Callback = delegate (int a, int b)
+            {
+                return a - b;
+            };
 
-                Console.WriteLine(Callback(7, 5));
+            Console.WriteLine(Callback(7, 5));
         }
     }
 }
