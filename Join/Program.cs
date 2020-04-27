@@ -30,7 +30,15 @@ class Mainapp
 
         Product[] arrProduct =
         {
-            new Product()
-        }
+            new Product(){Titile="비트", Star="정우성"},
+            new Product(){Title="CF 다수", Star="김태희"},
+            new Product(){Title="아이리스", Star="김태희"},
+            new Product(){Title="모래시계", Star="고현정"},
+            new Product(){Title="Solo 예찬", Star="이문새"},
+        };
+
+        var listProfile = 
+            from Profile in arrProfile
+            join product in arrProduct on Profile.Name equals product.Star select new
     }
 }
