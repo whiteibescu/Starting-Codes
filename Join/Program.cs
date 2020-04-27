@@ -26,6 +26,8 @@ class Mainapp
                 new Profile() { Name = "고현정", Height = 172 },
                 new Profile() { Name = "이문세", Height = 178 },
                 new Profile() { Name = "하하", Height = 171 },
-        }
+        };
+
+        Product[] arrProduct
     }
 }
