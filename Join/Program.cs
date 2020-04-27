@@ -28,6 +28,9 @@ class Mainapp
                 new Profile() { Name = "하하", Height = 171 },
         };
 
-        Product[] arrProduct
+        Product[] arrProduct =
+        {
+            new Product()
+        }
     }
 }
