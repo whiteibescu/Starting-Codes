@@ -24,9 +24,15 @@ namespace SimpleLinq2
 
             var profiles = arrProfile.
                 Where(profile => profile.Height <  175).Where
-                OrderBy(Profile => Profile.Height).
-                Select(Profile =>
-                new )
+                OrderBy(profile => Profile.Height).
+                Select(profile =>
+                new
+                { Name = Profile.Name,
+                    InchHeight = Profile.Height * 0.393
+                });
+
+            foreach (var profile in profiles)
+                Console.WriteLine($"{profile.Name}, {profile.InchHeight}");
         }
     }
 }
