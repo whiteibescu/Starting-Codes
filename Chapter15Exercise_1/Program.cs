@@ -26,7 +26,7 @@ cost=Car.Cost,
     };
 
 foreach (var car in selected)
-    WriteLine($"Cost={0}, MaxSpeed={1}", Car.cost, Car.Maxspeed);
+    WriteLine($"Cost={0}, MaxSpeed={1}", car.cost, car.Maxspeed);
 
 
 
