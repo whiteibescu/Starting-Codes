@@ -15,4 +15,11 @@ Car[] cars =
     new Car(){Cost=  82, MaxSpeed= 280},
 };
 
-var selected = cars.Where(class => c.Cost < 60).OrderBy(class => c.Cost);
+var selected =
+    from linq in car
+    where linq.Cost < 60 // 60보다 작으며
+    orderby linq.Cost ascending // 오름차순
+    select linq;
+
+foreach (var print in selected)
+    WriteLine($"Cost : {print.Cost}, MaxSpeed : {print.MaxSpeed}");
