@@ -17,13 +17,17 @@ Car[] cars =
 };
 
 var selected =
-    from linq in car
-    where linq.Cost >= 50 && linq.MaxSpeed >= 150
-    select linq;
+    from car in cars
+    where car.Cost >= 50 && linq.MaxSpeed >= 150
+    select new
+{
+cost=Car.Cost,
+    maxspeed=Car.MaxSpeed
+    };
 
-foreach (var print in selected)
-    WriteLine($"Cost " {print.Cost}, MaxSpeed : {print.MaxSpeed}");
-    
-    
-    
+foreach (var car in selected)
+    WriteLine($"Cost={0}, MaxSpeed={1}", Car.cost, Car.Maxspeed);
+
+
+
     /* Cost가 50 이상, MaxSpeed는 150 이상인 레코드를 조회하는 LINQ */;
