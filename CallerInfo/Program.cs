@@ -3,12 +3,12 @@ using System.Runtime.CompilerServices;
 
 namespace CallerInfo
 {
-    public class static class Trace
+    public static class Trace
     {
         public static void WriteLine(string message,
             [CallerFilePath] string file = "",
             [CallerLineNumber] int line = 0,
-            [CallerMemberName] string number = "")
+            [CallerMemberName] string member = "")
         {
             Console.WriteLine(
                 $"{file}(Line:{line}) {member}: {message}");
