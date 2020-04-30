@@ -24,6 +24,34 @@ namespace Touch
             string type = "File";
             if (args.Length > 1)
                 type = args[1];
+
+            if (File.Exists(path) || Directory.Exists(path))
+            {
+                if (type == "File")
+                    File.SetLastWriteTime(path, DateTime.Now);
+                else if (type == "Directory")
+                    Directory.SetLastWriteTime(path, DateTime.Now);
+                else
+                {
+                    OnWrongPathType(path);
+                    return;
+                }
+                Console.WriteLine($"Updated {path} {type}");
+            }
+            else
+            {
+                if (type == "File")
+                    File.Create(path).Close();
+                else if (type == "Directory")
+                    Directory.CreateDirectory(path);
+                else
+                {
+                    OnWrongPathType(path);
+                    return;
+                }
+
+                Console.WriteLine($"Created {path} {type}");
+            }
         }
     }
 }
