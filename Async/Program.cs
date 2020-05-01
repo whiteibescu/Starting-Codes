@@ -39,7 +39,7 @@ namespace Async
         {
             Caller();
 
-            Console.ReadLine(); //프로그램 종료 방지
+            Console.ReadLine();
         }
     }
 }
