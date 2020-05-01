@@ -21,9 +21,32 @@ namespace SerializingCollection
     }
 
     class MainApp
-        static void Main(string[] args)
     {
-        Stream ws = new FileStream("a.dat", FileMode.Create);
-        BinaryFormatter serializer = new BinaryFormatter().;
-    }
+        static void Main(string[] args)
+        {
+            Stream ws = new FileStream("a.dat", FileMode.Create);
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            List<NameCard> list = new List<NameCard>(0);
+            list.Add(new NameCard("박상현", "010-123-4567", 33));
+            list.Add(new NameCard("김연아", "010-323-1111", 22));
+            list.Add(new NameCard("장미란", "010-555-5555", 26));
+
+            serializer.Serialize(ws, list);
+            ws.Close();
+
+            Stream rs = new FileStream("a.dat", FileMode.Open);
+            BinaryFormatter deserializer = new BinaryFormatter();
+
+            List<NameCard> list2;
+            list2 = (List<NameCard>)deserializer.Deserialize(rs);
+            rs.Close();
+
+            foreach (NameCard nc in list2)
+            {
+                Console.WriteLine(
+                    $"Name : {nc.Name}, Phone: {nc.Phone}, Age: {nc.Age}");
+            }
+        }     
+    }     
 }
