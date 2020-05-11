@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Reflection.Metadata;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace AsyncFileIO
@@ -15,8 +17,36 @@ namespace AsyncFileIO
                 long totalCopied = 0;
 
                 using (
-                    )
+                    var toStream = new FileStream(ToPath, FileMode.Create))
+                {
+                    byte[] buffer = new byte[1024];
+                    int nRead = 0;
+                    while ((nRead = await fromStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+                    {
+                        await toStream.WriteAsync(buffer, 0, nRead);
+                        totalCopied += nRead;
+                    }
+                }
+
+                return totalCopied;
             }
+        }
+        static async void DoCopy(string FromPath, string ToPath)
+        {
+            long totalCopied = await CopyAsync(FromPath, ToPath);
+            Console.WriteLine($"Copied Total {totalCopied} Bytes.");
+        }
+
+        static void Main(string[] args)
+        {
+            if (args.Length < 2)
+            {
+                Console.WriteLine("Usage : AsyncFileIO <Source> <Destination>");
+                return;
+            }
+            DoCopy(args[0], args[1]);
+
+            Console.ReadLine();
         }
     }
 }
