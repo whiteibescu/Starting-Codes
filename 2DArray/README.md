@@ -8,3 +8,5 @@
 20장까지 예제 완료
 
 21장 진행
+
+22장 Garbage Collection
