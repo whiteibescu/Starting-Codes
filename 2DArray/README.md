@@ -10,5 +10,3 @@
 21장 진행
 
 22장 Garbage Collection
-
-23장
