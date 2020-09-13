@@ -10,12 +10,13 @@ namespace ThrowExpression
             {
                 int? a = null;
                 int b = a ?? throw new ArgumentNullException();
+                bool? x = null;
             }
             catch (ArgumentNullException e)
             {
                 Console.WriteLine(e);
             }
-
+            
             try
             {
                 int[] array = new[] { 1, 2, 3 };
