@@ -33,6 +33,7 @@ namespace AbstractClass
             AbstractBase obj = new Derived();
             obj.AbstractMethodA();
             obj.PublicMethodA();
+            //AbstractClass
         }
     }
 }
