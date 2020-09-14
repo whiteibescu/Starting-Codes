@@ -36,7 +36,7 @@ namespace Constructor
             {
                 Cat kitty = new Cat("키티", "하얀색");
                 kitty.Meow();
-                Console.WriteLine($"{kitty.Name} : {itty.Color}");
+                Console.WriteLine($"{kitty.Name} : {kitty.Color}");
 
                 Cat nero = new Cat("네로", "검은색");
                 nero.Meow();
