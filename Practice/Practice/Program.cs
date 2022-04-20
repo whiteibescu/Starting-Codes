@@ -4,78 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practice
+namespace DecoratorDesignPattern
 {
-    public abstract class Component
+    public interface ICar
     {
-        public abstract string Operation();
+        ICar ManufactureCar();
     }
 
-    class ConcreteComponent : Component
+    public class BMWCar : ICar
     {
-        public override string Operation()
+        private string CarName = "BMW";
+        public string CarBody { get; set; }
+        public string CarDoor { get; set; }
+        public string CarWheels { get; set; }
+        public string CarGlass { get; set; }
+        public string Engine { get; set; }
+        public override string ToString()
         {
-            return "ConcreteComponent";
+            return "BMWCar [CarName=" + CarName + ", CarBody=" + CarBody + ", CarDoor=" + CarDoor + ", CarWheels="
+                            + CarWheels + ", CarGlass=" + CarGlass + ", Engine=" + Engine + "]";
         }
-    }
-
-    abstract class Decorator : Component
-    {
-        protected Component _component;
-
-        public Decorator(Component component)
+        public ICar ManufactureCar()
         {
-            this._component = component;
-        }
-
-        public void SetComponent(Component component)
-        {
-            this._component = component;
-        }
-
-        public override string Operation()
-        {
-            if (this._component != null)
-            {
-                return this._component.Operation();
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
-    }
-
-    class ConcreteDecoratorA : Decorator
-    {
-        public ConcreteDecoratorA(Component comp) : base(comp)
-        { 
-        }
-
-        public override string Operation()
-        {
-            return $"ConcreteDecoratorB({base.Operation()})";
-        }
-    }
-
-    public class Client
-    {
-        public void ClientCode(Component component)
-        {
-            Console.WriteLine("Result: {0}", component.Operation());
-        }
-    }
-
-    class MainApp
-    {
-        public static void Main(string[] args)
-        {
-            Client client = new Client();
-
-            var simple = new ConcreteComponent();
-            Console.WriteLine("Cleint: I get a simple component");
-            client.ClientCode(simple);
-            Console.WriteLine();
+            CarBody = "carbon fiber material";
+            CarDoor = "4 car doors";
+            CarWheels = "6 car glasses";
+            CarGlass = "4 MRF wheels";
+            return this;
         }
     }
 }
