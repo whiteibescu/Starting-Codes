@@ -1,173 +1,184 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DoFactory.GangOfFour.Factory.RealWorld
+namespace Bridge.RealWorld
 {
     /// <summary>
-    /// MainApp startup class for Real-World 
-    /// Factory Method Design Pattern.
+    /// Bridge Design Pattern
     /// </summary>
 
-    class MainApp
+    public class Program
     {
-        /// <summary>
-        /// Entry point into console application.
-        /// </summary>
-
-        static void Main()
+        public static void Main(string[] args)
         {
-            // Note: constructors call Factory Method
+            // Create RefinedAbstraction
 
-            Document[] documents = new Document[2];
+            var customers = new Customers();
 
-            documents[0] = new Resume();
-            documents[1] = new Report();
+            // Set ConcreteImplementor
 
-            // Display document pages
+            customers.Data = new CustomersData("Chicago");
 
-            foreach (Document document in documents)
-            {
-                Console.WriteLine("\n" + document.GetType().Name + "--");
-                foreach (Page page in document.Pages)
-                {
-                    Console.WriteLine(" " + page.GetType().Name);
-                }
-            }
+            // Exercise the bridge
+
+            customers.Show();
+            customers.Next();
+            customers.Show();
+            customers.Next();
+            customers.Show();
+            customers.Add("Henry Velasquez");
+
+            customers.ShowAll();
 
             // Wait for user
 
             Console.ReadKey();
         }
     }
-
     /// <summary>
-    /// The 'Product' abstract class
+    /// The 'Abstraction' class
     /// </summary>
 
-    abstract class Page
+    public class CustomersBase
     {
-    }
+        private DataObject dataObject;
 
-    /// <summary>
-    /// A 'ConcreteProduct' class
-    /// </summary>
-
-    class SkillsPage : Page
-    {
-    }
-
-    /// <summary>
-    /// A 'ConcreteProduct' class
-    /// </summary>
-
-    class EducationPage : Page
-    {
-    }
-
-    /// <summary>
-    /// A 'ConcreteProduct' class
-    /// </summary>
-
-    class ExperiencePage : Page
-    {
-    }
-
-    /// <summary>
-    /// A 'ConcreteProduct' class
-    /// </summary>
-
-    class IntroductionPage : Page
-    {
-    }
-
-    /// <summary>
-    /// A 'ConcreteProduct' class
-    /// </summary>
-
-    class ResultsPage : Page
-    {
-    }
-
-    /// <summary>
-    /// A 'ConcreteProduct' class
-    /// </summary>
-
-    class ConclusionPage : Page
-    {
-    }
-
-    /// <summary>
-    /// A 'ConcreteProduct' class
-    /// </summary>
-
-    class SummaryPage : Page
-    {
-    }
-
-    /// <summary>
-    /// A 'ConcreteProduct' class
-    /// </summary>
-
-    class BibliographyPage : Page
-    {
-    }
-
-    /// <summary>
-    /// The 'Creator' abstract class
-    /// </summary>
-
-    abstract class Document
-    {
-        private List<Page> _pages = new List<Page>();
-
-        // Constructor calls abstract Factory method
-
-        public Document()
+        public DataObject Data
         {
-            this.CreatePages();
+            set { dataObject = value; }
+            get { return dataObject; }
         }
 
-        public List<Page> Pages
+        public virtual void Next()
         {
-            get { return _pages; }
+            dataObject.NextRecord();
         }
 
-        // Factory Method
-
-        public abstract void CreatePages();
-    }
-
-    /// <summary>
-    /// A 'ConcreteCreator' class
-    /// </summary>
-
-    class Resume : Document
-    {
-        // Factory Method implementation
-
-        public override void CreatePages()
+        public virtual void Prior()
         {
-            Pages.Add(new SkillsPage());
-            Pages.Add(new EducationPage());
-            Pages.Add(new ExperiencePage());
+            dataObject.PriorRecord();
+        }
+
+        public virtual void Add(string customer)
+        {
+            dataObject.AddRecord(customer);
+        }
+
+        public virtual void Delete(string customer)
+        {
+            dataObject.DeleteRecord(customer);
+        }
+
+        public virtual void Show()
+        {
+            dataObject.ShowRecord();
+        }
+
+        public virtual void ShowAll()
+        {
+            dataObject.ShowAllRecords();
         }
     }
 
     /// <summary>
-    /// A 'ConcreteCreator' class
+    /// The 'RefinedAbstraction' class
     /// </summary>
 
-    class Report : Document
+    public class Customers : CustomersBase
     {
-        // Factory Method implementation
-
-        public override void CreatePages()
+        public override void ShowAll()
         {
-            Pages.Add(new IntroductionPage());
-            Pages.Add(new ResultsPage());
-            Pages.Add(new ConclusionPage());
-            Pages.Add(new SummaryPage());
-            Pages.Add(new BibliographyPage());
+            // Add separator lines
+
+            Console.WriteLine();
+            Console.WriteLine("------------------------");
+            base.ShowAll();
+            Console.WriteLine("------------------------");
+        }
+    }
+
+    /// <summary>
+    /// The 'Implementor' abstract class
+    /// </summary>
+
+    public abstract class DataObject
+    {
+        public abstract void NextRecord();
+        public abstract void PriorRecord();
+        public abstract void AddRecord(string name);
+        public abstract void DeleteRecord(string name);
+        public abstract string GetCurrentRecord();
+        public abstract void ShowRecord();
+        public abstract void ShowAllRecords();
+    }
+
+    /// <summary>
+    /// The 'ConcreteImplementor' class
+    /// </summary>
+
+    public class CustomersData : DataObject
+    {
+        private readonly List<string> customers = new List<string>();
+        private int current = 0;
+        private string city;
+
+        public CustomersData(string city)
+        {
+            this.city = city;
+
+            // Loaded from a database 
+
+            customers.Add("Jim Jones");
+            customers.Add("Samual Jackson");
+            customers.Add("Allen Good");
+            customers.Add("Ann Stills");
+            customers.Add("Lisa Giolani");
+        }
+
+        public override void NextRecord()
+        {
+            if (current <= customers.Count - 1)
+            {
+                current++;
+            }
+        }
+
+        public override void PriorRecord()
+        {
+            if (current > 0)
+            {
+                current--;
+            }
+        }
+
+        public override void AddRecord(string customer)
+        {
+            customers.Add(customer);
+        }
+
+        public override void DeleteRecord(string customer)
+        {
+            customers.Remove(customer);
+        }
+
+        public override string GetCurrentRecord()
+        {
+            return customers[current];
+        }
+
+        public override void ShowRecord()
+        {
+            Console.WriteLine(customers[current]);
+        }
+
+        public override void ShowAllRecords()
+        {
+            Console.WriteLine("Customer City: " + city);
+
+            foreach (string customer in customers)
+            {
+                Console.WriteLine(" " + customer);
+            }
         }
     }
 }
