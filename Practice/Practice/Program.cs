@@ -1,35 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Iterator.Structural
+namespace Facade.RealWorld
 {
     /// <summary>
-    /// Iterator Design Pattern
+    /// Facade Design Pattern
     /// </summary>
 
     public class Program
     {
         public static void Main(string[] args)
         {
-            ConcreteAggregate a = new ConcreteAggregate();
-            a[0] = "Item A";
-            a[1] = "Item B";
-            a[2] = "Item C";
-            a[3] = "Item D";
+            // Facade
 
-            // Create Iterator and provide aggregate
+            Mortgage mortgage = new Mortgage();
 
-            Iterator i = a.CreateIterator();
+            // Evaluate mortgage eligibility for customer
 
-            Console.WriteLine("Iterating over collection:");
+            Customer customer = new Customer("Ann McKinsey");
+            bool eligible = mortgage.IsEligible(customer, 125000);
 
-            object item = i.First();
-
-            while (item != null)
-            {
-                Console.WriteLine(item);
-                item = i.Next();
-            }
+            Console.WriteLine("\n" + customer.Name +
+                    " has been " + (eligible ? "Approved" : "Rejected"));
 
             // Wait for user
 
@@ -38,103 +29,98 @@ namespace Iterator.Structural
     }
 
     /// <summary>
-    /// The 'Aggregate' abstract class
+    /// The 'Subsystem ClassA' class
     /// </summary>
 
-    public abstract class Aggregate
+    public class Bank
     {
-        public abstract Iterator CreateIterator();
-    }
-
-    /// <summary>
-    /// The 'ConcreteAggregate' class
-    /// </summary>
-
-    public class ConcreteAggregate : Aggregate
-    {
-        List<object> items = new List<object>();
-
-        public override Iterator CreateIterator()
+        public bool HasSufficientSavings(Customer c, int amount)
         {
-            return new ConcreteIterator(this);
-        }
-
-        // Get item count
-
-        public int Count
-        {
-            get { return items.Count; }
-        }
-
-        // Indexer
-
-        public object this[int index]
-        {
-            get { return items[index]; }
-            set { items.Insert(index, value); }
+            Console.WriteLine("Check bank for " + c.Name);
+            return true;
         }
     }
 
     /// <summary>
-    /// The 'Iterator' abstract class
+    /// The 'Subsystem ClassB' class
     /// </summary>
 
-    public abstract class Iterator
+    public class Credit
     {
-        public abstract object First();
-        public abstract object Next();
-        public abstract bool IsDone();
-        public abstract object CurrentItem();
+        public bool HasGoodCredit(Customer c)
+        {
+            Console.WriteLine("Check credit for " + c.Name);
+            return true;
+        }
     }
 
     /// <summary>
-    /// The 'ConcreteIterator' class
+    /// The 'Subsystem ClassC' class
     /// </summary>
 
-    public class ConcreteIterator : Iterator
+    public class Loan
     {
-        ConcreteAggregate aggregate;
-        int current = 0;
+        public bool HasNoBadLoans(Customer c)
+        {
+            Console.WriteLine("Check loans for " + c.Name);
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// Customer class
+    /// </summary>
+
+    public class Customer
+    {
+        private string name;
 
         // Constructor
 
-        public ConcreteIterator(ConcreteAggregate aggregate)
+        public Customer(string name)
         {
-            this.aggregate = aggregate;
+            this.name = name;
         }
 
-        // Gets first iteration item
-
-        public override object First()
+        public string Name
         {
-            return aggregate[0];
+            get { return name; }
         }
+    }
 
-        // Gets next iteration item
+    /// <summary>
+    /// The 'Facade' class
+    /// </summary>
 
-        public override object Next()
+    public class Mortgage
+    {
+        Bank bank = new Bank();
+        Loan loan = new Loan();
+        Credit credit = new Credit();
+
+        public bool IsEligible(Customer cust, int amount)
         {
-            object ret = null;
-            if (current < aggregate.Count - 1)
+            Console.WriteLine("{0} applies for {1:C} loan\n",
+                cust.Name, amount);
+
+            bool eligible = true;
+
+            // Check creditworthyness of applicant
+
+            if (!bank.HasSufficientSavings(cust, amount))
             {
-                ret = aggregate[++current];
+                eligible = false;
+            }
+            else if (!loan.HasNoBadLoans(cust))
+            {
+                eligible = false;
+            }
+            else if (!credit.HasGoodCredit(cust))
+            {
+                eligible = false;
             }
 
-            return ret;
-        }
-
-        // Gets current iteration item
-
-        public override object CurrentItem()
-        {
-            return aggregate[current];
-        }
-
-        // Gets whether iterations are complete
-
-        public override bool IsDone()
-        {
-            return current >= aggregate.Count;
+            return eligible;
         }
     }
 }
