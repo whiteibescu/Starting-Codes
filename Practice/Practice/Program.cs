@@ -1,184 +1,140 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bridge.RealWorld
+namespace Iterator.Structural
 {
     /// <summary>
-    /// Bridge Design Pattern
+    /// Iterator Design Pattern
     /// </summary>
 
     public class Program
     {
         public static void Main(string[] args)
         {
-            // Create RefinedAbstraction
+            ConcreteAggregate a = new ConcreteAggregate();
+            a[0] = "Item A";
+            a[1] = "Item B";
+            a[2] = "Item C";
+            a[3] = "Item D";
 
-            var customers = new Customers();
+            // Create Iterator and provide aggregate
 
-            // Set ConcreteImplementor
+            Iterator i = a.CreateIterator();
 
-            customers.Data = new CustomersData("Chicago");
+            Console.WriteLine("Iterating over collection:");
 
-            // Exercise the bridge
+            object item = i.First();
 
-            customers.Show();
-            customers.Next();
-            customers.Show();
-            customers.Next();
-            customers.Show();
-            customers.Add("Henry Velasquez");
-
-            customers.ShowAll();
+            while (item != null)
+            {
+                Console.WriteLine(item);
+                item = i.Next();
+            }
 
             // Wait for user
 
             Console.ReadKey();
         }
     }
+
     /// <summary>
-    /// The 'Abstraction' class
+    /// The 'Aggregate' abstract class
     /// </summary>
 
-    public class CustomersBase
+    public abstract class Aggregate
     {
-        private DataObject dataObject;
+        public abstract Iterator CreateIterator();
+    }
 
-        public DataObject Data
+    /// <summary>
+    /// The 'ConcreteAggregate' class
+    /// </summary>
+
+    public class ConcreteAggregate : Aggregate
+    {
+        List<object> items = new List<object>();
+
+        public override Iterator CreateIterator()
         {
-            set { dataObject = value; }
-            get { return dataObject; }
+            return new ConcreteIterator(this);
         }
 
-        public virtual void Next()
+        // Get item count
+
+        public int Count
         {
-            dataObject.NextRecord();
+            get { return items.Count; }
         }
 
-        public virtual void Prior()
-        {
-            dataObject.PriorRecord();
-        }
+        // Indexer
 
-        public virtual void Add(string customer)
+        public object this[int index]
         {
-            dataObject.AddRecord(customer);
-        }
-
-        public virtual void Delete(string customer)
-        {
-            dataObject.DeleteRecord(customer);
-        }
-
-        public virtual void Show()
-        {
-            dataObject.ShowRecord();
-        }
-
-        public virtual void ShowAll()
-        {
-            dataObject.ShowAllRecords();
+            get { return items[index]; }
+            set { items.Insert(index, value); }
         }
     }
 
     /// <summary>
-    /// The 'RefinedAbstraction' class
+    /// The 'Iterator' abstract class
     /// </summary>
 
-    public class Customers : CustomersBase
+    public abstract class Iterator
     {
-        public override void ShowAll()
-        {
-            // Add separator lines
-
-            Console.WriteLine();
-            Console.WriteLine("------------------------");
-            base.ShowAll();
-            Console.WriteLine("------------------------");
-        }
+        public abstract object First();
+        public abstract object Next();
+        public abstract bool IsDone();
+        public abstract object CurrentItem();
     }
 
     /// <summary>
-    /// The 'Implementor' abstract class
+    /// The 'ConcreteIterator' class
     /// </summary>
 
-    public abstract class DataObject
+    public class ConcreteIterator : Iterator
     {
-        public abstract void NextRecord();
-        public abstract void PriorRecord();
-        public abstract void AddRecord(string name);
-        public abstract void DeleteRecord(string name);
-        public abstract string GetCurrentRecord();
-        public abstract void ShowRecord();
-        public abstract void ShowAllRecords();
-    }
+        ConcreteAggregate aggregate;
+        int current = 0;
 
-    /// <summary>
-    /// The 'ConcreteImplementor' class
-    /// </summary>
+        // Constructor
 
-    public class CustomersData : DataObject
-    {
-        private readonly List<string> customers = new List<string>();
-        private int current = 0;
-        private string city;
-
-        public CustomersData(string city)
+        public ConcreteIterator(ConcreteAggregate aggregate)
         {
-            this.city = city;
-
-            // Loaded from a database 
-
-            customers.Add("Jim Jones");
-            customers.Add("Samual Jackson");
-            customers.Add("Allen Good");
-            customers.Add("Ann Stills");
-            customers.Add("Lisa Giolani");
+            this.aggregate = aggregate;
         }
 
-        public override void NextRecord()
+        // Gets first iteration item
+
+        public override object First()
         {
-            if (current <= customers.Count - 1)
+            return aggregate[0];
+        }
+
+        // Gets next iteration item
+
+        public override object Next()
+        {
+            object ret = null;
+            if (current < aggregate.Count - 1)
             {
-                current++;
+                ret = aggregate[++current];
             }
+
+            return ret;
         }
 
-        public override void PriorRecord()
+        // Gets current iteration item
+
+        public override object CurrentItem()
         {
-            if (current > 0)
-            {
-                current--;
-            }
+            return aggregate[current];
         }
 
-        public override void AddRecord(string customer)
-        {
-            customers.Add(customer);
-        }
+        // Gets whether iterations are complete
 
-        public override void DeleteRecord(string customer)
+        public override bool IsDone()
         {
-            customers.Remove(customer);
-        }
-
-        public override string GetCurrentRecord()
-        {
-            return customers[current];
-        }
-
-        public override void ShowRecord()
-        {
-            Console.WriteLine(customers[current]);
-        }
-
-        public override void ShowAllRecords()
-        {
-            Console.WriteLine("Customer City: " + city);
-
-            foreach (string customer in customers)
-            {
-                Console.WriteLine(" " + customer);
-            }
+            return current >= aggregate.Count;
         }
     }
 }
